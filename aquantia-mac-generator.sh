@@ -6,17 +6,12 @@
 
 set -e
 
-RAW_SERIAL_NUM=$(cat /sys/devices/soc0/serial_number)
-FORMATTED_SERIAL_NUM=$(printf '%x\n' "${RAW_SERIAL_NUM}" | rev)
-
-FIRST=$(echo "${FORMATTED_SERIAL_NUM}" | cut -b1-2)
-SECOND=$(echo "${FORMATTED_SERIAL_NUM}" | cut -b3-4)
-THIRD=$(echo "${FORMATTED_SERIAL_NUM}" | cut -b5-6)
+SN="$(printf "%x\n" "$(cat /sys/devices/soc0/serial_number)" | rev)"
 
 cat > /etc/systemd/network/10-aquantia-10gb.link << __EOF__
 [Match]
 PermanentMACAddress=00:17:b6:00:00:00
     
 [Link]
-MACAddress=00:17:b6:${FIRST}:${SECOND}:${THIRD}
+MACAddress=00:17:b6:${SN:0:2}:${SN:2:2}:${SN:4:2}
 __EOF__
