@@ -21,7 +21,7 @@ a MAC address of 00:17:b6:00:00:00.
 %install
 rm -rf "$RPM_BUILD_ROOT"
 mkdir -p "$RPM_BUILD_ROOT/usr/bin/"
-cp mac-generator.sh "$RPM_BUILD_ROOT/usr/bin/"
+cp aquantia-mac-generator.sh "$RPM_BUILD_ROOT/usr/bin/"
 
 
 %post
