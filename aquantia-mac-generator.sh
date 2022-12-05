@@ -6,6 +6,11 @@
 
 set -e
 
+if [ ! -f /sys/devices/soc0/serial_number ] ; then
+	echo "Not creating 10-aquantia-10gb.link due to missing SoC serial number"
+	exit 0
+fi
+
 SN="$(printf "%x\n" "$(cat /sys/devices/soc0/serial_number)" | rev)"
 
 cat > /etc/systemd/network/10-aquantia-10gb.link << __EOF__
