@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# SPDX-License-Identifier: GPL-2.0
 
 # Grab the SoC serial number from sysfs, convert it to base16, reverse it so that the
 # least significant bytes appear first, and use that to generate a random MAC address
