@@ -4,7 +4,7 @@ Release:        1%{?dist}
 Summary:	Correct Aquantia 10GB MAC address with trailing zeros
 BuildArch:	noarch
 License:	GPLv2
-URL:		https://gitlab.cee.redhat.com/bmasney/aquantia-mac-generator
+URL:		https://github.com/masneyb/aquantia-mac-generator
 Source0:	%{name}-%{version}.tar.gz
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
