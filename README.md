@@ -31,4 +31,28 @@ Aquantia NIC driver:
 This patch was rejected upstream since technically that is a valid MAC address. The
 fix for this does not belong in the kernel.
 
-To build a noarch RPM, type `make rpm`.
+# Limitation
+
+Everything works as expected if you directly install this RPM on a SA8540P board. However,
+if you install this RPM in a generic image that's meant to be flashed onto the SA8540P,
+then the first time the machine boots, it'll come up with a MAC address of
+`00:17:b6:00:00:00`. On the second boot, it'll come up with a different MAC address
+as expected.
+
+This is due to the dependency in the
+[aquantia-mac-generator.service](aquantia-mac-generator.service) unit. The problem is
+that this needs to be ran before the networking comes up, but after the filesystem
+and kernel modules are loaded. Specifically, the
+[qcom_socinfo](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/soc/qcom/socinfo.c)
+kernel module needs to be loaded so that the SoC serial number can be looked up. I
+tried the following dependencies but the system won't boot:
+
+    After=systemd-modules-load.service
+    Before=network-pre.target systemd-udevd.service
+    Wants=network-pre.target
+
+Suggestions are welcome about how to fix this!
+
+# Building
+
+Type `make rpm` to build and the generated RPM will be in `~/rpmbuild/RPMS/noarch/`.

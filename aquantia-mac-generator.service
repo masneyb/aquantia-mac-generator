@@ -1,0 +1,11 @@
+[Unit]
+Description=Create network unit file for 10GB Aquantia NIC
+After=systemd-modules-load.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/aquantia-mac-generator.sh
+
+[Install]
+WantedBy=multi-user.target

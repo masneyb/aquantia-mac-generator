@@ -20,7 +20,8 @@ a MAC address of 00:17:b6:00:00:00.
 
 %install
 rm -rf "$RPM_BUILD_ROOT"
-mkdir -p "$RPM_BUILD_ROOT/usr/bin/"
+mkdir -p "$RPM_BUILD_ROOT/etc/systemd/system/" "$RPM_BUILD_ROOT/usr/bin/"
+cp aquantia-mac-generator.service "$RPM_BUILD_ROOT/etc/systemd/system/aquantia-mac-generator.service"
 cp aquantia-mac-generator.sh "$RPM_BUILD_ROOT/usr/bin/"
 
 
@@ -37,6 +38,7 @@ rm -rf "$RPM_BUILD_ROOT"
 
 
 %files
+/etc/systemd/system/aquantia-mac-generator.service
 /usr/bin/aquantia-mac-generator.sh
 
 
