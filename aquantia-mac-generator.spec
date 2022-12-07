@@ -1,5 +1,5 @@
 Name:		aquantia-mac-generator
-Version:	1.0
+Version:	1.1
 Release:        1%{?dist}
 Summary:	Correct Aquantia 10GB MAC address with trailing zeros
 BuildArch:	noarch
@@ -43,5 +43,8 @@ rm -rf "$RPM_BUILD_ROOT"
 
 
 %changelog
+* Wed Dec 7 2022 Brian Masney <bmasney@redhat.com> 1.0
+- Ensure that /etc/systemd/network directory exists
+
 * Thu Dec 1 2022 Brian Masney <bmasney@redhat.com> 1.0
 - First commit!

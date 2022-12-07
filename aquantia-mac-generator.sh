@@ -9,6 +9,7 @@ set -e
 MI=$(cat /etc/machine-id)
 NEW_MAC="00:17:b6:${MI:0:2}:${MI:2:2}:${MI:4:2}"
 
+mkdir -p /etc/systemd/network/
 cat > /etc/systemd/network/10-aquantia-10gb.link << __EOF__
 [Match]
 PermanentMACAddress=00:17:b6:00:00:00
