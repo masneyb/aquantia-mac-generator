@@ -30,7 +30,7 @@ cp aquantia-mac-generator.sh "$RPM_BUILD_ROOT/usr/bin/"
 
 
 %postun
-rm -f /etc/systemd/network/10-aquantia-10gb.link
+rm -f /run/systemd/network/10-aquantia-10gb.link
 
 
 %clean

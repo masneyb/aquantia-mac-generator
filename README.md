@@ -5,7 +5,7 @@ have the same MAC address show up on the same LAN multiple times.
 
 This RPM package uses systemd-networkd to rewrite the `00:17:b6:00:00:00` MAC address
 into one that's based on the board serial number. A systemd-networkd link file
-`/etc/systemd/network/10-aquantia-10gb.link` is created with contents similar to the
+`/run/systemd/network/10-aquantia-10gb.link` is created with contents similar to the
 following:
 
     [Match]

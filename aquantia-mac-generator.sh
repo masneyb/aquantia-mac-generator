@@ -23,8 +23,8 @@ else
     NEW_MAC="${OUI}:${SN:0:2}:${SN:2:2}:${SN:4:2}"
 fi
 
-mkdir -p /etc/systemd/network/
-cat > /etc/systemd/network/10-aquantia-10gb.link << __EOF__
+mkdir -p /run/systemd/network/
+cat > /run/systemd/network/10-aquantia-10gb.link << __EOF__
 [Match]
 PermanentMACAddress=00:17:b6:00:00:00
     
