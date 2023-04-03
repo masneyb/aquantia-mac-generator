@@ -3,6 +3,7 @@ Description=Create network unit file for 10GB Aquantia NIC
 DefaultDependencies=no
 Before=network-pre.target systemd-udevd.service
 Wants=network-pre.target
+After=systemd-network-generator.service
 
 [Service]
 Type=oneshot
