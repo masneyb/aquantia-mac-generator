@@ -10,7 +10,7 @@ BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 %description
 Generates a systemd-networkd link file with a random MAC address based
-on the systemd machine-id for the 10GB Aquantia NICs that come up with
+on the board serial number for the 10GB Aquantia NICs that come up with
 a MAC address of 00:17:b6:00:00:00.
 
 
@@ -30,7 +30,7 @@ cp aquantia-mac-generator.sh "$RPM_BUILD_ROOT/usr/bin/"
 
 
 %postun
-rm -f /etc/systemd/network/10-aquantia-10gb.link
+rm -f /run/systemd/network/10-aquantia-10gb.link
 
 
 %clean
